@@ -16,8 +16,6 @@ function AllVodkaCocktails() {
   }, []
   )
 
-
-
   return <main>    
     <h2>Vodka Cocktails</h2>
     <div className="container">

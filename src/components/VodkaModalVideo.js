@@ -23,7 +23,6 @@ function VodkaModalVideo() {
     </React.Fragment>
 
   )
-
 }
 
 export default VodkaModalVideo

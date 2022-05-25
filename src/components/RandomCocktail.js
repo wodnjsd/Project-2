@@ -14,7 +14,6 @@ function MusicMood() {
   const [randomCocktail, setRandomCocktail] = React.useState(undefined)
 
 
-
   React.useEffect(() => {
     async function fetchCocktail() {
       const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${base}`)
@@ -28,10 +27,8 @@ function MusicMood() {
     }
     fetchCocktail()
 
-
     // localStorage.getItem(`${cocktailName}`)
   }, [base, cocktailName])
-
 
   if (!randomCocktail) {
     return <p>Cocktail Loading...</p>

@@ -24,4 +24,5 @@ function RumModalVideo() {
 
   )
 }
+
 export default RumModalVideo

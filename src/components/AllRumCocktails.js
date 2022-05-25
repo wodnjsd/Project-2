@@ -16,8 +16,6 @@ function AllRumCocktails() {
   }, []
   )
 
-
-
   return <main>    
     <h2>Rum Cocktails</h2>
     <div className="container">
@@ -38,8 +36,6 @@ function AllRumCocktails() {
     
       </div>
     </div>
-
-
   </main>
 
 }

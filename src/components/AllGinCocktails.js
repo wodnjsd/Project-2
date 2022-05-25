@@ -16,8 +16,6 @@ function AllGinCocktails() {
   }, []
   )
 
-
-
   return <main>    
     <h2>Gin Cocktails</h2>
     <div className="container">
@@ -38,8 +36,6 @@ function AllGinCocktails() {
     
       </div>
     </div>
-
-
   </main>
 
 }

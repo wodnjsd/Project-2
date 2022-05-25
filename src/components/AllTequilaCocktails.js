@@ -32,6 +32,7 @@ function AllTequilaCocktails() {
           }) : <p>Loading cocktails...</p>
 
         }
+        
       </div>
     </div>
   </main>

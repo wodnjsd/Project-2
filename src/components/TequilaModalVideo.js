@@ -24,4 +24,5 @@ function TequilaModalVideo() {
 
   )
 }
+
 export default TequilaModalVideo

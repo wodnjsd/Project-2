@@ -23,9 +23,8 @@ function GinModalVideo() {
       </div>
     </React.Fragment>
       
-  
-    
   )
 }
+
 export default GinModalVideo
 
