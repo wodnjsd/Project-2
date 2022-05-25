@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, useParams } from "react-router-dom"
-// import ModalVideos from "./ModalVideos"
 import GinModalVideo from "./GinModalVideo"
 import VodkaModalVideo from "./VodkaModalVideo"
 import RumModalVideo from "./RumModalVideo"
@@ -12,38 +11,26 @@ function MusicMood() {
   const { base } = useParams()
   const { cocktailName } = useParams()
   const [cocktail, setCocktail] = React.useState(undefined)
-  // const [likes, updateLikes] = React.useState(0 + localStorage.getItem(`${cocktailName}`))
   const [randomCocktail, setRandomCocktail] = React.useState(undefined)
 
 
-  // function increaseLikes() {
-  //   updateLikes(parseInt(likes) + 1)
-  //   localStorage.setItem(`${cocktailName}`, (parseInt(likes)))
-  //   console.log(likes)
-  // }
-
-  // React.useEffect(() => {
-  //   localStorage.setItem(`${cocktailName}`, (parseInt(likes)))
-  // }, [likes, cocktailName]) // ! This will run whenever likes changes.
 
   React.useEffect(() => {
     async function fetchCocktail() {
       const resp = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${base}`)
       const data = await resp.json()
-      const random = data.drinks[Math.floor(Math.random() * data.drinks.length)]
+      const random = data.drinks[Math.floor(Math.random() * data.drinks.length)] // had to store random as a variable (inner scope) in order to use for setCocktail state.
       setCocktail(random)
-      const resp2 = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${random.idDrink}`)
+      const resp2 = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${random.idDrink}`) // this endpoint was able to use the id from the random variable (base ingredient)
       const data2 = await resp2.json()
       setRandomCocktail(data2)
-      console.log(data2)
 
     }
     fetchCocktail()
 
 
-    localStorage.getItem(`${cocktailName}`)
+    // localStorage.getItem(`${cocktailName}`)
   }, [base, cocktailName])
-  console.log(cocktail)
 
 
   if (!randomCocktail) {
@@ -56,7 +43,6 @@ function MusicMood() {
         {cocktail ? (
           <div>
             <h2 className="title has-text-centered">{randomCocktail.drinks[0].strDrink}</h2>
-            {/* <span className="likes"> {likes} ♡</span>             */}
             <hr />
             <div className="columns">
               <div className="column is-half">
@@ -87,19 +73,11 @@ function MusicMood() {
                 <p>{randomCocktail.drinks[0].strInstructions}</p>
                 <hr />
                 <div className="modal-container">
-                  {/* <ModalVideos /> */}
                   {base === "Gin" && <GinModalVideo />}
                   {base === "Vodka" && <VodkaModalVideo />}
                   {base === "Rum" && <RumModalVideo />}
                   {base === "Tequila" && <TequilaModalVideo />}
                 </div>
-                {/* <div className="card-footer">
-                  <button
-                    onClick={increaseLikes}
-                    className={"button is-primary is-light"}
-                  > Like ❤️  </button>
-                  
-                </div> */}
                 <hr />
               </div>
             </div>
